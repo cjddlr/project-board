@@ -4,12 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Getter
@@ -21,7 +16,7 @@ import java.util.Objects;
 })
 
 @Entity
-public class ArticleComment {
+public class ArticleComment extends AuditingFields{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,15 +24,6 @@ public class ArticleComment {
 
     @Setter @ManyToOne(optional = false) private Article article;
     @Setter @Column(nullable = false, length = 500) private String content;
-
-    @CreatedDate
-    private @Column(nullable = false) LocalDateTime createdAt;
-    @CreatedBy
-    private @Column(nullable = false, length = 100) String createdBy;
-    @LastModifiedDate
-    private @Column(nullable = false) LocalDateTime modifiedAt;
-    @LastModifiedBy
-    private @Column(nullable = false, length = 100) String modifiedBy;
 
     protected ArticleComment() {
     }
