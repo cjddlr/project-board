@@ -22,4 +22,7 @@ spring:
     properties:
       hibernate.format_sql: true
       hibernate.default_batch_fetch_size: 100
+  data.rest:
+    base-path: /api
+    detection-strategy: annotated
   sql.init.mode: always
